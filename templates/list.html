@@ -1,0 +1,27 @@
+{% extends 'base/base.html' %}
+{% block title %} StreetShopKid {% endblock %}
+{% block content %}
+    <div class="row">
+    {% for item in productos %}
+        <div class="col-lg-3 col-mb-4 mb-4">
+            <div class="card h-100">
+                <a href="/detail/{{item.slug}}"><img class="card-img-top" src="{{ item.imagen }}"></a>
+                    <div class="card-body">
+                        <h4 class="card-title">{{ item.nombre }} </h4>
+                    </div>
+                    <h5>${{item.precio}} clp</h5>
+                    <p class="card-text">{{item.marca}}</p>
+                    <div class="card-footer">
+                        <small class="text-muted"><a class="btn btn-succes" href="/carro"> Añadir al carrito</a></small>
+                    </div>
+            </div>
+        </div>
+    {% empty %}
+    <div class="card w-100 mt-1">
+    <div class="card-body">
+        <h4>No se encontraron productos en esta categoria.</h4>
+    </div>
+    </div>
+    {% endfor %}
+    </div>
+{% endblock %}
